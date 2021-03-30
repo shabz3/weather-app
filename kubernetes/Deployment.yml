@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-app-deployment
+  namespace: weather-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: weather-app-deployment
+  template:
+    metadata:
+      labels:
+        app: weather-app-deployment
+    spec:
+      containers:
+        - name: weather-app-deployment
+          image: shaiban/weather-app:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP

@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: weather-app-ingress
+  namespace: weather-app
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: weather-app.ccc4153f-4a75-46d2-9494-43f16492cb4c.k8s.civo.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: weather-app-service
+          servicePort: 80
