@@ -45,7 +45,7 @@ function App() {
 			.then((returnData) => {
 				setCurrentWeatherData(returnData.current);
 				setTimezoneOffset(returnData.timezone_offset);
-				const currentTimeUTC = returnData.current.dt;
+				const currentTimeUTC = returnData && returnData.current.dt;
 				for (let hourData in returnData.hourly) {
 					if (weatherData.length === 4) {
 						break;
@@ -77,10 +77,10 @@ function App() {
 	};
 
 	return (
-		<div className="p-1 h-screen flex flex-col bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500  text-white">
-			{/* <div className="flex-none">
+		<div className="p-1 h-screen flex flex-col bg-gradient-to-r from-yellow-400 via-red-400 to-pink-400  text-white">
+			<div className="flex-none">
 				{locationData ? <NavBar apiKey={apiKey_positionstack} callback={handleCallback} /> : null}
-			</div> */}
+			</div>
 			<div className="flex flex-grow dark:text-gray-800">
 				{currentWeatherData && locationData ? (
 					<CurrentWeather currentWeatherData={currentWeatherData} locationData={locationData} />
