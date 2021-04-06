@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - weather-app.ccc4153f-4a75-46d2-9494-43f16492cb4c.k8s.civo.com
+        - weather-app.e00abd18-7e4a-4c2b-aabd-7f892e490a32.k8s.civo.com
       secretName: weather-app-tls
   rules:
-    - host: weather-app.ccc4153f-4a75-46d2-9494-43f16492cb4c.k8s.civo.com
+    - host: weather-app.e00abd18-7e4a-4c2b-aabd-7f892e490a32.k8s.civo.com
       http:
         paths:
           - pathType: Prefix
