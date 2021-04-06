@@ -19,3 +19,17 @@ spec:
           ports:
             - containerPort: 80
               protocol: TCP
+          envFrom:
+            - secretRef:
+                name: weather-app-secrets
+          volumeMounts:
+            - name: nginx-conf
+              mountPath: "/etc/nginx/conf.d"
+              readOnly: true
+      volumes:
+        - name: nginx-conf
+          secret:
+            secretName: nginx-conf-file
+            items: 
+              - key: nginx-conf-file-env-var
+                path: default.conf

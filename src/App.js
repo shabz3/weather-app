@@ -7,9 +7,11 @@ import NavBar from './components/NavBar';
 import CurrentWeather from './components/CurrentWeather';
 
 function App() {
-	const apiKey_openweathermap = 'd00843cf9d7174970dbb9b72de9c2adf';
-	const apiKey_opencagedata = '3e851baaedc9454aa9e4560f77638ede';
-	const apiKey_positionstack = 'c2a94b3ec70a50f4e0af536cd426d100';
+	let apiKey_openweathermap = process.env.REACT_APP_OPENWEATHERMAP;
+	let apiKey_opencagedata = process.env.REACT_APP_OPENCAGEDATA;
+	let apiKey_positionstack = process.env.REACT_APP_POSITIONSTACK;
+
+	console.log(process.env.REACT_APP_OPENWEATHERMAP);
 
 	const [coords, setCoords] = useState({ latitude: null, longitude: null });
 	const [weatherData, setWeatherData] = useState([]);
