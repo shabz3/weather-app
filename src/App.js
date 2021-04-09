@@ -10,8 +10,7 @@ function App() {
 	let apiKey_openweathermap = process.env.REACT_APP_OPENWEATHERMAP;
 	let apiKey_opencagedata = process.env.REACT_APP_OPENCAGEDATA;
 	let apiKey_positionstack = process.env.REACT_APP_POSITIONSTACK;
-
-	console.log(process.env.REACT_APP_OPENWEATHERMAP);
+	let apiKey_geocode = process.env.REACT_APP_GEOCODE;
 
 	const [coords, setCoords] = useState({ latitude: null, longitude: null });
 	const [weatherData, setWeatherData] = useState([]);
@@ -45,6 +44,7 @@ function App() {
 		fetch(url)
 			.then((data) => data.json())
 			.then((returnData) => {
+				console.log(returnData.current);
 				setCurrentWeatherData(returnData.current);
 				setTimezoneOffset(returnData.timezone_offset);
 				const currentTimeUTC = returnData && returnData.current.dt;
@@ -81,7 +81,7 @@ function App() {
 	return (
 		<div className="p-1 h-screen flex flex-col bg-gradient-to-r from-yellow-400 via-red-400 to-pink-400  text-white">
 			<div className="flex-none">
-				{locationData ? <NavBar apiKey={apiKey_positionstack} callback={handleCallback} /> : null}
+				{locationData ? <NavBar apiKey={apiKey_geocode} callback={handleCallback} /> : null}
 			</div>
 			<div className="flex flex-grow dark:text-gray-800">
 				{currentWeatherData && locationData ? (
